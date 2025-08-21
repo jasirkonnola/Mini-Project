@@ -1,0 +1,96 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EduMentor - Where Learn, Share, &amp; Build Careers</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    
+</head>
+<body>
+
+<header>
+<div class="nav-container">
+    <nav>
+        <div class="nav-brand">
+            <div class="hamburger-menu-container">
+                <div class="hamburger-menu">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+                <div class="nav-dropdown-menu">
+                    <ul>
+                        <li class="nav-item"><a href="{% url 'edubase:home' %}" class="current-link">Home</a></li>
+                        <li class="nav-item"><a href="{% url 'edubase:about' %}" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Help</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link">Send feedback</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <a href="{% url 'edubase:home' %}" class="nav-icon" style="text-decoration: none; color: black;">
+                <i class="fab fa-stack-overflow"></i>
+                <div class="nav-icon-text"><span class="nav-bold-text">EduMentor</span></div>
+            </a>
+        </div>
+        <div class="nav-search">
+            <div class="search-container">
+                <form action="" method="GET" class="search-form">
+                    <i class="fas fa-search"></i>
+                    <input type="text" name="search-area" placeholder="Search..." aria-label="Search input">
+                    <button type="submit" class="search-btn">Search</button>
+                </form>
+            </div>
+            <div class="search-hints">
+                <div class="search-arrow-up"></div>
+                <div class="search-hint-body">
+                    <div class="hints-grid-column">
+                        <div class="hint-text"><span>[tag]</span> search within a tag</div>
+                        <div class="hint-text"><span>user:1234</span> search by author</div>
+                        <div class="hint-text"><span>"words here"</span> exact phrase</div>
+                    </div>
+                    <div class="hints-grid-column">
+                        <div class="hint-text"><span>answers:0</span> unanswered questions</div>
+                        <div class="hint-text"><span>score:3</span> posts with a 3+ score</div>
+                    </div>
+                </div>
+                <div class="search-hint-footer">
+                    <a href="#" class="btn">Ask a question</a>
+                    <a href="#" class="search-help">Search help</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="nav-right-buttons">
+            <div class="search-btn">
+                <i class="fas fa-search"></i>
+            </div>
+                    <a href="" class="btn btn-login">Log in</a>
+                    <a href="" class="btn btn-register">Sign up</a>
+        </div>
+    </nav>
+</div>
+
+<div style="margin-top: 10px;">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}" role="alert">
+        <h4 style="text-align: center;">{{ message }}</h4>
+    {% endfor %}
+    {% endif %}
+</div>
+</header>
+{% block content %}
+
+{% endblock content %}
+<script src="{% static 'main.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+</body>
+</html>
