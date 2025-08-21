@@ -1,6 +1,130 @@
 {% extends "base.html" %}
 
 {% block content %}
+<style>
+/* === Global Reset === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: #333;
+    min-height: 100vh;
+}
+
+/* === About Page Container === */
+.container {
+    padding: 40px 15px;
+}
+
+/* === Glassmorphism Card === */
+.card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 40px;
+    color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* === Headings === */
+.card h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.card h4 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #ffe082;
+}
+
+/* === Text Styles === */
+.lead {
+    font-size: 1.1rem;
+    color: #e0e0e0;
+}
+
+.card p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #f5f5f5;
+}
+
+/* === List Styling === */
+.card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.card ul li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #f1f1f1;
+}
+
+.card ul li::before {
+    content: "✔";
+    position: absolute;
+    left: 0;
+    color: #4cafef;
+    font-weight: bold;
+}
+
+/* === Buttons === */
+.btn {
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #ff512f, #dd2476);
+    border: none;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(255, 81, 47, 0.5);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, #dd2476, #ff512f);
+    transform: scale(1.05);
+}
+
+.btn-outline-secondary {
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+.btn-outline-secondary:hover {
+    background: #fff;
+    color: #333;
+    transform: scale(1.05);
+}
+
+/* === Divider === */
+hr {
+    border: none;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    margin: 20px 0;
+}
+
+</style>
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -38,9 +162,11 @@
                         <strong>build a stronger, smarter, and more connected learning community</strong>.
                     </p>
                 </div>
+                <br>
+                <hr>
                 <div class="text-center mt-4">
-                    <a href="" class="btn btn-primary">Get Started</a>
-                    <a href="" class="btn btn-outline-secondary">Log In</a>
+                    <a href="{% url 'edubase:home' %}" class="btn btn-primary">Home</a>
+                    <a href="" class="btn btn-outline-secondary">Log Out</a>
                 </div>
             </div>
         </div>
