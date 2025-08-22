@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(200deg, #ffeb3b 0%, #ff9800 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 450px;
+  padding: 20px;
+}
+
+#formContent {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+  padding: 40px 30px;
+  text-align: center;
+}
+
+.tab-header {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 30px 0;
+}
+
+.tab {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #aaa;
+  padding-bottom: 5px;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.tab.active {
+  color: #000;
+  border-color: #5fbae9;
+}
+
+.tab:hover {
+  color: #333;
+  border-color: #5fbae9;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  color: #333;
+}
+
+h2.inactive {
+  color: #aaa;
+}
+
+h2.active {
+  color: #000;
+  border-bottom: 2px solid #5fbae9;
+}
+
+a {
+  color: #5fbae9;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #444;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #f6f6f6;
+  border-radius: 5px;
+  background-color: #f6f6f6;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #5fbae9;
+  outline: none;
+}
+
+input[type="submit"] {
+  background-color: #56baed;
+  color: white;
+  padding: 15px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  text-transform: uppercase;
+  box-shadow: 0 10px 30px rgba(95, 186, 233, 0.4);
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #39ace7;
+}
+
+#formFooter {
+  margin-top: 30px;
+  font-size: 14px;
+  color: #666;
+}
+
+.fadeIn {
+  animation: fadeIn ease-in 1s forwards;
+  opacity: 0;
+}
+
+.fadeIn.first { animation-delay: 0.4s; }
+.fadeIn.second { animation-delay: 0.6s; }
+.fadeIn.third { animation-delay: 0.8s; }
+.fadeIn.fourth { animation-delay: 1s; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+</style>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <div class="tab-header">
+      <a href="#" class="tab active">Sign In</a>
+      <a href="{% url 'register' %}" class="tab inactive">Sign Up</a>
+    </div>
+
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <!-- Optional: Add logo or icon here -->
+    </div>
+
+    <!-- Login Form -->
+    <form method="POST" class="fadeInForm">
+      {% csrf_token %}
+      <div class="form-group fadeIn second">
+        <label for="id_username">Username</label>
+        <input type="text" name="username" id="id_username" class="form-control" placeholder="Enter your username" required>
+      </div>
+
+      <div class="form-group fadeIn third">
+        <label for="id_password">Password</label>
+        <input type="password" name="password" id="id_password" class="form-control" placeholder="Enter your password" required>
+      </div>
+
+      <div class="form-group fadeIn fourth">
+        <input type="submit" value="Sign In" class="btn btn-primary w-100">
+      </div>
+    </form>
+
+    <!-- Remind Password -->
+    <div id="formFooter">
+      <p>Don't have an account yet? <a class="underlineHover" href="{% url 'register' %}">Register</a></p>
+    </div>
+  </div>
+</div>
+{% endblock content %}

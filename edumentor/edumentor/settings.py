@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-3*n+uw@gz^#e&5q3&*b0dui)7tc58j94s_qo#zjp0e72v)pp$f'
+SECRET_KEY = 'django-insecure-!bu^m(9vu50h1nv3_z$=1y3osn#yb0-4wl4hvaf12+-3)th=21'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Django built-ins
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,9 +46,10 @@ INSTALLED_APPS = [
 
     # crispy-forms
     'crispy_forms',
-    'crispy_bootstrap5',
-
+    'crispy_bootstrap5',    # ← for Bootstrap 5
+    # 'crispy_bootstrap4',  # ← instead if you chose Bootstrap 4
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -125,8 +127,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap5'   # or "bootstrap4"
+
+LOGIN_REDIRECT_URL = 'edubase:home'
+LOGIN_URL = 'login'

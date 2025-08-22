@@ -2,14 +2,11 @@
 {% block content %}
 <section class="hero">
     <div class="hero-content">
-        <!-- <h1 class="hero-title">We <span><3 </span> people who code</h1> -->
         <h1 class="hero-title">Every doubt matters. Every answer empowers.</h1>
         <p class="hero-paragraph">
            We’re here to make learning simple, step-by-step, and crystal clear.
         </p>
         <div class="hero-options">
-            <!-- <a href="#" class="btn btn-developers">For developers</a> -->
-            <!-- <a href="#" class="btn btn-businesses">For businesses</a> -->
             <a href="" class="btn btn-developers" style="margin-left: 5px;">Latest Questions</a>
 
         </div>
@@ -41,10 +38,14 @@
                </div>
                <div class="questions-body-item-content">
                    <img src="https://cdn.sstatic.net/Img/home/illo-feats-vote.svg?v=9d2eb0efdc17" alt="" class="question-item-content-img">
-                   <h4 class="question-item-content-text">
+                  
+                   {% if user.is_authenticated %}
+                     <h4 class="question-item-content-text">
                        Accept the answer which solved your problem to let others benefit from the valuable information.
                    </h4>
-                   <a href="#" class="btn btn-orange question-item-content-btn">Create an account</a>
+                    {% else %}
+                    <a href="#" class="btn btn-orange question-item-content-btn">Create an account</a>
+                    {% endif %}
                </div>
                <div class="questions-body-items">
                    <div class="questions-body-item"  data-id="3">
@@ -64,7 +65,7 @@
                    </div>
                </div>
            </div>
-        </div>
+       </div>
     </div>
 </section>
 
