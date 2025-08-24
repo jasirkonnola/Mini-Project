@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/feather-icons"></script>
+
+<style>
+  .profile-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    padding: 40px;
+    max-width: 900px;
+    margin: auto;
+  }
+
+  .profile-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+
+  .profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  .profile-info h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+
+  .profile-info p {
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 10px;
+  }
+
+  .profile-actions a {
+    margin-right: 10px;
+  }
+
+  .profile-section h5 {
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #333;
+  }
+
+  .profile-section p {
+    margin-bottom: 8px;
+    color: #555;
+  }
+
+  .btn-custom {
+    border-radius: 30px;
+    padding: 8px 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .social-icons a {
+    font-size: 20px;
+    margin-right: 15px;
+    color: #555;
+    transition: color 0.3s ease;
+  }
+
+  .social-icons a:hover {
+    color: #000;
+  }
+</style>
+
+<body 
+  style="
+    font-family: 'Poppins', sans-serif;
+    padding-top: 80px;
+    {% if user.profile.background_image %}
+      background-image: url('{{ user.profile.background_image.url }}');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    {% else %}
+      background: linear-gradient(135deg, #f9d423 0%, #ff4e50 100%);
+    {% endif %}
+  "
+>
+  <div class="container">
+    <div class="profile-card">
+      <div class="profile-header">
+        <img src="{{ user.profile.image.url }}" alt="Profile Image" class="profile-avatar">
+        <div class="profile-info">
+          <h2>{{ user.username|title }}</h2>
+          <p>{{ user.profile.bio|default:"No bio added yet." }}</p>
+          <div class="profile-actions">
+            <a href="" class="btn btn-primary btn-custom">Update Profile</a>
+            <a href="" class="btn btn-secondary btn-custom">Ask Question</a>
+            <a href="" class="btn btn-outline-dark btn-custom">View Questions</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="row profile-section">
+        <div class="col-md-6">
+          <h5>Contact Info</h5>
+          <p><strong>Email:</strong> {{ user.email }}</p>
+          <p><strong>Phone:</strong> {{ user.profile.phone|default:"Not provided" }}</p>
+        </div>
+        <div class="col-md-6">
+          <h5>Projects</h5>
+          <p><strong>Recent:</strong> <a href="#">Project1</a></p>
+          <p><strong>Most Viewed:</strong> <a href="#">Project2</a></p>
+        </div>
+      </div>
+
+      <div class="mt-4 social-icons">
+        <h5>Connect</h5>
+        <a href="#"><i data-feather="facebook"></i></a>
+        <a href="#"><i data-feather="twitter"></i></a>
+        <a href="#"><i data-feather="instagram"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    feather.replace()
+  </script>
+</body>
+{% endblock %}

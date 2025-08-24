@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="{% static 'main.css' %}">
 </head>
+
 <body>
 
 <header>
@@ -47,6 +48,7 @@
             </ul>
         </div>
         {% endcomment %}
+        {% if user.is_authenticated %}
         <div class="nav-search">
             <div class="search-container">
                 <form action="" method="GET" class="search-form">
@@ -74,18 +76,22 @@
                 </div>
             </div>
         </div>
+        {% else %}
+        
+        {% endif %}
         
         <div class="nav-right-buttons">
             <div class="search-btn">
                 <i class="fas fa-search"></i>
             </div>
             {% if user.is_authenticated %}
-                    <a href="#" class="btn btn-login">Profile</a>
-                    <a href="{% url 'logout' %}" class="btn btn-register">Logout</a>
+            <a href="{% url 'profile' %}" class="btn btn-login">Profile</a>
+            <a href="{% url 'logout' %}" class="btn btn-register">Logout</a>
             {% else %}
-                    <a href="{% url 'login' %}" class="btn btn-login">Log in</a>
-                    <a href="{% url 'register' %}" class="btn btn-register">Sign up</a>
+            <a href="{% url 'login' %}" class="btn btn-login">Log in</a>
+            <a href="{% url 'register' %}" class="btn btn-register">Sign up</a>
             {% endif %}
+
         </div>
     </nav>
 </div>

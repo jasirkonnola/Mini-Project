@@ -6,10 +6,15 @@
         <p class="hero-paragraph">
            We’re here to make learning simple, step-by-step, and crystal clear.
         </p>
+        {% if user.is_authenticated %}
         <div class="hero-options">
             <a href="" class="btn btn-developers" style="margin-left: 5px;">Latest Questions</a>
-
         </div>
+        {% else %}
+        <div class="hero-options">
+            <a href="{% url 'login' %}" class="btn btn-developers" style="margin-left: 5px;">Latest Questions</a>
+        </div>
+        {% endif %}
     </div>
 </section>
 <section class="questions">

@@ -1,11 +1,184 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags static %}
+
 {% block content %}
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(200deg, #ffeb3b 0%, #ff9800 100%);
+    min-height: 100vh;
+    padding-top: 80px; /* ensures navbar and search bar space */
+  }
+
+  .wrapper {
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  #formContent {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+    padding: 40px 30px;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: #333;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #444;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #f6f6f6;
+    border-radius: 6px;
+    background-color: #f6f6f6;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+
+  input:focus {
+    background-color: #fff;
+    border-color: #5fbae9;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(95, 186, 233, 0.2);
+  }
+
+  button[type="submit"] {
+    background-color: #56baed;
+    color: white;
+    padding: 14px;
+    width: 100%;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    box-shadow: 0 10px 30px rgba(95, 186, 233, 0.4);
+    transition: background-color 0.3s ease;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #39ace7;
+  }
+
+  .text-danger {
+    font-size: 0.9rem;
+    color: #e74c3c;
+  }
+
+  #formFooter {
+    margin-top: 25px;
+    font-size: 14px;
+    color: #666;
+  }
+
+  #formFooter a {
+    color: #5fbae9;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  #formFooter a:hover {
+    color: #333;
+    text-decoration: underline;
+  }
+
+  /* Fade-in Animations */
+  .fadeIn {
+    animation: fadeIn ease-in 1s forwards;
+    opacity: 0;
+  }
+
+  .fadeIn.first { animation-delay: 0.4s; }
+  .fadeIn.second { animation-delay: 0.6s; }
+  .fadeIn.third { animation-delay: 0.8s; }
+  .fadeIn.fourth { animation-delay: 1s; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
 <div class="container mt-5">
-  <h2 class="text-center">Sign Up</h2>
-  <form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Register</button>
-  </form>
+  <div class="wrapper">
+    <div id="formContent" class="fadeIn">
+      <h2 class="active">Register</h2>
+      <form method="POST" novalidate>
+        {% csrf_token %}
+
+        <!-- Username -->
+        <div class="form-group fadeIn first">
+          {{ form.username.label_tag }}
+          {{ form.username }}
+          {% for error in form.username.errors %}
+            <p class="text-danger">{{ error }}</p>
+          {% endfor %}
+        </div>
+
+        <!-- Email -->
+        <div class="form-group fadeIn second">
+          {{ form.email.label_tag }}
+          {{ form.email }}
+          {% for error in form.email.errors %}
+            <p class="text-danger">{{ error }}</p>
+          {% endfor %}
+        </div>
+
+        <!-- Password 1 -->
+        <div class="form-group fadeIn third">
+          {{ form.password1.label_tag }}
+          {{ form.password1 }}
+          {% for error in form.password1.errors %}
+            <p class="text-danger">{{ error }}</p>
+          {% endfor %}
+        </div>
+
+        <!-- Password 2 -->
+        <div class="form-group fadeIn fourth">
+          {{ form.password2.label_tag }}
+          {{ form.password2 }}
+          {% for error in form.password2.errors %}
+            <p class="text-danger">{{ error }}</p>
+          {% endfor %}
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="fadeIn">Sign Up</button>
+      </form>
+
+      <div id="formFooter" class="fadeIn">
+        <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+      </div>
+    </div>
+  </div>
 </div>
-{% endblock content %}
+{% endblock %}
