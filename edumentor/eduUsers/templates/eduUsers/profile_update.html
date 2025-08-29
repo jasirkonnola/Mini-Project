@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="page-content page-container" id="page-content" style="margin-top: 80px;">
+    <div class="padding">
+        <div class="row d-flex justify-content-center">
+            <div class="col-xl-6 col-md-12">
+                <div class="card user-card-full">
+                    <div class="row m-l-0 m-r-0">
+                        <!-- Profile Sidebar -->
+                        <div class="col-sm-4 bg-c-lite-green user-profile">
+                            <div class="card-block text-center text-white">
+                                <div class="m-b-25">
+                                    <img src="{{ user.profile.image.url|default:'/static/images/default-profile.png' }}" class="img-radius" alt="User-Profile-Image" style="width: 100px; height: 100px; object-fit: cover;">
+                                </div>
+                                <h6 class="f-w-600" style="font-size: 24px; color: black;">{{ user.username }}</h6>
+                                <p style="font-size: 14px; color: black;">{{ user.profile.bio }}</p>
+                            </div>
+                        </div>
+
+                        <!-- Profile Form -->
+                        <div class="col-sm-8">
+                            <div class="card-block">
+                                <form method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {{ u_form|crispy }}
+                                    {{ p_form|crispy }}
+                                    <button class="btn btn-success mt-2" type="submit">Update Profile</button>
+                                </form>
+
+                                <!-- Background Image Preview -->
+                                {% if user.profile.background_image %}
+                                    <div class="mt-3">
+                                        <label class="font-weight-bold">Background Preview:</label>
+                                        <img src="{{ user.profile.background_image.url }}" alt="Background Image" style="width: 100%; border-radius: 5px;">
+                                    </div>
+                                {% endif %}
+
+                                <!-- Navigation -->
+                                <div class="mt-3">
+                                    <a class="btn btn-secondary" href="{% url 'profile' %}">Go Back</a>
+                                </div>
+
+                                <!-- Social Icons -->
+                                <ul class="social-link list-unstyled mt-4 mb-2 d-flex">
+                                    <li class="mr-3"><a href="#"><i data-feather="facebook"></i></a></li>
+                                    <li class="mr-3"><a href="#"><i data-feather="twitter"></i></a></li>
+                                    <li><a href="#"><i data-feather="instagram"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Feather Icons Script -->
+<script src="https://unpkg.com/feather-icons"></script>
+<script>
+    feather.replace()
+</script>
+{% endblock content %}
