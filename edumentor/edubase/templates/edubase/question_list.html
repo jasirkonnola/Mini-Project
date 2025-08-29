@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body{
+            margin-top: 100px;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+        }
+        #fh1{
+            margin-top: 20px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        #sub-nav{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        #logout-btn {
+            background: linear-gradient(90deg, #2ecc71, #3498db);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            shadow: rgba(255, 255, 255, 1) 0px 5px 10px;
+            padding: 8px 18px;
+            border-radius: 25px;
+            transition: all 0.3s ease-in-out;
+}
+
+        #logout-btn:hover{
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+        #fh3{
+            text-align: left;
+            font-size: 19px;
+            padding-top: 10px;
+            font-weight: 500;
+        }
+        .questions .container{
+            background: #fff;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 10px;
+            transition: transform 0.2s ease-in-out;
+            margin-bottom: 5px;
+        }
+        .questions .container:hover{
+            transform: translateY(-3px);
+        }
+        #fh6{
+            font-size: 14px;
+            font-weight: normal;
+            color: #444;
+        }
+        a{
+            color: #3498db;
+            font-weight: 500;
+        }
+        a:hover{
+            text-decoration: underline;
+            color: #1d5fa7;
+        }
+        h5{
+            text-align: right;
+            font-size: 12px;
+            font-style: italic;
+            margin-top: 8px;
+        }
+        .tag-pill{
+            display: inline-block;
+            background: #e0f3ff;
+            color: #0077cc;
+            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 15px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="sub-nav">
+            <h1 id="fh1">Top Questions</h1>
+            {% if user.is_authenticated %}
+            <button class="btn" id="logout-btn">
+                <a id="fa" href="" style="color: white; text-decoration: none;">Ask Question</a>
+            </button>
+            {% else %}
+            <button class="btn" id="logout-btn">
+                <a id="fa" href="{% url 'login' %}" style="color: white; text-decoration: none;">Ask Question</a>
+            </button>
+            {% endif %}
+        </div>
+
+        <div class="list-question">
+            <div class="questions">
+                {% for question in questions %}
+                <div class="container">
+                    <div id="title-sec" style="display: flex; align-items: center;">
+                        <h3 id="fh3"><a href="">{{ question.title }}</a></h3>
+                    </div>
+                    <hr>
+                    {% if question.content|wordcount <= 10 %}
+                    <h6 id="fh6" style="text-align: left;">{{ question.content |safe}}</h6>
+                    {% else %}
+                    <h6 id="fh6" style="text-align: left;">{{ question.content|truncatewords:10}} <a href="">Read More</a></h6>
+                    {% endif %}
+                    <div style="text-align: right;">
+                    <h6 id="fh6" style="font-size: 12px; font-style: italic; color: rgb(120,120,120);">
+                        Asked By: <a href="{% url 'profile' %}">{{ question.user }}</a> 
+                        | On: {{question.created_at}}
+                    </h6>
+                </div> 
+            </div>
+            {% endfor %}
+        </div>   
+    </div>
+</body>
+</html>
+{% endblock content %}

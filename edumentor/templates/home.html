@@ -8,7 +8,7 @@
         </p>
         {% if user.is_authenticated %}
         <div class="hero-options">
-            <a href="" class="btn btn-developers" style="margin-left: 5px;">Latest Questions</a>
+            <a href="{% url 'edubase:question-lists' %}" class="btn btn-developers" style="margin-left: 5px;">Latest Questions</a>
         </div>
         {% else %}
         <div class="hero-options">
