@@ -1,0 +1,150 @@
+Here are some flashcards based on the provided sources:
+
+---
+
+**Flashcard 1**
+
+*   **FRONT:** Semantic Web (Web 3.0)
+*   **BACK:** An extension of the current World Wide Web, proposed by Tim Berners-Lee, designed to make data machine-readable and understandable, enabling intelligent agents to process, share, and interpret content meaningfully. Its primary goal is to make data on the web machine-readable and understandable, moving beyond content designed solely for human reading.
+
+---
+
+**Flashcard 2**
+
+*   **FRONT:** Ontology
+*   **BACK:** A shared, formal conceptualisation of a domain that defines concepts, properties, and relationships in a clear, structured way, expressed in logic-based languages like RDF and OWL, allowing systems to communicate uniformly. Ontologies help bridge the knowledge gap by describing the meaning (semantics) of data in a clear, structured way that machines can process.
+
+---
+
+**Flashcard 3**
+
+*   **FRONT:** Machine-Readable Data
+*   **BACK:** Information structured in a format that computers can process, interpret, and reason with, rather than just display for human reading. The Semantic Web aims to make data on the web machine-readable and understandable.
+
+---
+
+**Flashcard 4**
+
+*   **FRONT:** Semantic Profile
+*   **BACK:** A machine-readable description of a person, object, or entity using structured formats (like RDF) to provide meaning to data, enabling computers to understand and compare information. It typically uses RDF to express information as triples (Subject–Predicate–Object).
+
+---
+
+**Flashcard 5**
+
+*   **FRONT:** Resource Description Framework (RDF)
+*   **BACK:** A foundational language of the Semantic Web, used to express information about resources in a machine-readable format, typically as Subject–Predicate–Object triples. RDF has standard syntaxes and logic-based formal semantics, which allows computers to manipulate it.
+
+---
+
+**Flashcard 6**
+
+*   **FRONT:** Web Ontology Language (OWL)
+*   **BACK:** A family of knowledge representation languages for authoring ontologies, providing richer expressivity than RDF, with standard syntaxes and logic-based formal semantics for computer manipulation.
+
+---
+
+**Flashcard 7**
+
+*   **FRONT:** Hype Cycle
+*   **BACK:** A graphical representation developed by Gartner Research that describes the typical pattern of enthusiasm and disillusionment that new technologies experience from initial innovation to widespread adoption and productivity. It comprises five stages: Technology Trigger, Peak of Inflated Expectations, Trough of Disillusionment, Slope of Enlightenment, and Plateau of Productivity. Semantic Web technologies like XML and RDF have reached a stable, post-hype phase, while OWL is still catching up.
+
+---
+
+**Flashcard 8**
+
+*   **FRONT:** Web 2.0
+*   **BACK:** A term coined by Tim O'Reilly, describing a new phase of the World Wide Web characterised by user-centred design, interactivity, content creation, and collaboration, moving beyond the static "read-only" web.
+
+---
+
+**Flashcard 9**
+
+*   **FRONT:** Social Network Analysis (SNA)
+*   **BACK:** The study of social relationships among a set of actors (individuals, groups, or organisations), focusing on the patterns of connections and ties rather than just individual attributes. Unlike traditional social science methods, SNA emphasizes the relationships (links/ties) among actors.
+
+---
+
+**Flashcard 10**
+
+*   **FRONT:** Nodes (Vertices)
+*   **BACK:** In graph theory and SNA, these represent the individual actors, entities, or units within a network (e.g., people, organisations, web pages).
+
+---
+
+**Flashcard 11**
+
+*   **FRONT:** Edges (Ties)
+*   **BACK:** In graph theory and SNA, these represent the relationships or connections between nodes within a network.
+
+---
+
+**Flashcard 12**
+
+*   **FRONT:** Graph Theory
+*   **BACK:** A branch of mathematics that provides the theoretical foundation for SNA, representing social structures as graphs composed of nodes and edges.
+
+---
+
+**Flashcard 13**
+
+*   **FRONT:** Six Degrees of Separation
+*   **BACK:** A concept, popularised by Stanley Milgram's experiment, suggesting that any two people in the world are connected by a chain of six or fewer acquaintances. This finding arose from Milgram's 1960s "small-world" experiment.
+
+---
+
+**Flashcard 14**
+
+*   **FRONT:** Small-World Property
+*   **BACK:** A characteristic of networks where any two nodes are connected by a relatively short path, even if the network is very large, often featuring high local clustering alongside a few long-range connections.
+
+---
+
+**Flashcard 15**
+
+*   **FRONT:** Diameter of the Graph
+*   **BACK:** The longest geodesic (shortest path) between any two nodes in a network, representing the maximum number of steps required to connect the two most distant nodes.
+
+---
+
+**Flashcard 16**
+
+*   **FRONT:** Macro Structure
+*   **BACK:** The overall pattern of relationships in a social network, focusing on how large groups or the entire network are organised, including clusters, shortcuts, and connected components.
+
+---
+
+**Flashcard 17**
+
+*   **FRONT:** Clusters (Communities)
+*   **BACK:** Groups of nodes within a network that are densely connected internally but have fewer connections to nodes outside the group. In real life, friends of a person often know each other, forming groups.
+
+---
+
+**Flashcard 18**
+
+*   **FRONT:** Bridges (Shortcuts)
+*   **BACK:** Links in a network that connect different clusters or distant parts of the network, playing a crucial role in information spread and reducing path lengths. High betweenness edges often act as bridges between clusters.
+
+---
+
+**Flashcard 19**
+
+*   **FRONT:** Core-Periphery (C/P) Structure
+*   **BACK:** A network pattern where a central "core" of densely connected nodes interacts with a "periphery" of nodes that are connected primarily to the core but not extensively to each other. The core nodes are central and well-connected, while periphery nodes are less connected and depend on the core.
+
+---
+
+**Flashcard 20**
+
+*   **FRONT:** Edge-Betweenness Clustering Method
+*   **BACK:** An algorithm that detects subgroups or communities in a network by iteratively identifying and removing edges that lie on many shortest paths between nodes, effectively revealing boundaries between clusters. It identifies edges with high betweenness, as these often connect different communities.
+
+---
+
+**Flashcard 21**
+
+*   **FRONT:** Structural Dimension of Social Capital
+*   **BACK:** Refers to the overall pattern of connections in a network that provides access to information, resources, and influence based on an individual's or entity's position and types of ties within the network.
+
+---

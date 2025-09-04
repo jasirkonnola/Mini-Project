@@ -99,7 +99,7 @@
           <div class="profile-actions">
             <a href="{% url 'profile_update' %}" class="btn btn-primary btn-custom">Update Profile</a>
             <a href="" class="btn btn-secondary btn-custom">Ask Question</a>
-            <a href="" class="btn btn-outline-dark btn-custom">View Questions</a>
+            <a href="{% url 'edubase:question-lists' %}" class="btn btn-outline-dark btn-custom">View Questions</a>
           </div>
         </div>
       </div>
@@ -116,18 +116,38 @@
           <p><strong>Most Viewed:</strong> <a href="#">Project2</a></p>
         </div>
       </div>
-
       <div class="mt-4 social-icons">
-        <h5>Connect</h5>
-        <a href="#"><i data-feather="facebook"></i></a>
-        <a href="#"><i data-feather="twitter"></i></a>
-        <a href="#"><i data-feather="instagram"></i></a>
-      </div>
+         <h5>Connect</h5>
+         <a href="{{ user.profile.Facebook|default:'#' }}" target="_blank" class="social-link" data-platform="Facebook">
+          <i data-feather="facebook"></i>
+        </a>
+        <a href="{{ user.profile.X|default:'#' }}" target="_blank" class="social-link" data-platform="X">
+          <i data-feather="x"></i>
+        </a>
+        <a href="{{ user.profile.instagram|default:'#' }}" target="_blank" class="social-link" data-platform="Instagram">
+          <i data-feather="instagram"></i>
+         </a>
+          <!-- Comment display area -->
+           <div id="social-comment" style="margin-top: 10px; color: red; font-weight: bold;"></div>
+        </div>
     </div>
   </div>
 
   <script>
     feather.replace()
+
+    document.querySelectorAll('.social-link').forEach(link => {
+    link.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (href === '#' || href.trim() === '') {
+        e.preventDefault(); // stop navigation
+        const platform = this.getAttribute('data-platform');
+        document.getElementById('social-comment').textContent = `${platform} link not provided`;
+      } else {
+        document.getElementById('social-comment').textContent = ''; // clear message
+      }
+    });
+  });
   </script>
 </body>
 {% endblock %}

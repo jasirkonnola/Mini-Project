@@ -8,6 +8,9 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
     phone = models.IntegerField(null=True, blank=True)
+    Facebook = models.URLField(max_length=200, blank=True)
+    X = models.URLField(max_length=200, blank=True)
+    instagram = models.URLField(max_length=200, blank=True)
 
     # Profile picture (stored inside "media/profile_pic/")
     image = models.ImageField(
