@@ -98,8 +98,8 @@
           <p>{{ user.profile.bio|default:"No bio added yet." }}</p>
           <div class="profile-actions">
             <a href="{% url 'profile_update' %}" class="btn btn-primary btn-custom">Update Profile</a>
-            <a href="" class="btn btn-secondary btn-custom">Ask Question</a>
-            <a href="{% url 'edubase:question-lists' %}" class="btn btn-outline-dark btn-custom">View Questions</a>
+            <a href="" class="btn btn-secondary btn-custom">Ask Queries</a>
+            <a href="{% url 'edubase:question-lists' %}" class="btn btn-outline-dark btn-custom">View Queries</a>
           </div>
         </div>
       </div>
@@ -109,11 +109,6 @@
           <h5>Contact Info</h5>
           <p><strong>Email:</strong> {{ user.email }}</p>
           <p><strong>Phone:</strong> {{ user.profile.phone|default:"Not provided" }}</p>
-        </div>
-        <div class="col-md-6">
-          <h5>Projects</h5>
-          <p><strong>Recent:</strong> <a href="#">Project1</a></p>
-          <p><strong>Most Viewed:</strong> <a href="#">Project2</a></p>
         </div>
       </div>
       <div class="mt-4 social-icons">
