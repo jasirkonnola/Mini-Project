@@ -4,6 +4,8 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
+from edubase.models import Question  # adjust path if needed
+
 
 
 def register(request):
@@ -39,7 +41,11 @@ def logout_view(request):
 
 @login_required
 def profile(request):
-    return render(request, 'eduUsers/profile.html')
+    user_questions = Question.objects.filter(user=request.user).distinct().order_by('-created_at')
+    return render(request, 'eduUsers/profile.html', {
+        'user_questions': user_questions,
+    })
+
 
 
 @login_required

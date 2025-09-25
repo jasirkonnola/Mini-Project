@@ -5,6 +5,11 @@
 <script src="https://unpkg.com/feather-icons"></script>
 
 <style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    padding-top: 80px;
+  }
+
   .profile-card {
     background: rgba(255, 255, 255, 0.9);
     border-radius: 20px;
@@ -73,12 +78,37 @@
   .social-icons a:hover {
     color: #000;
   }
+
+  .question-link {
+    font-weight: 600;
+    font-size: 15px;
+    font-style: bold;
+    color: #333;
+    text-decoration: none;
+  }
+
+  .question-link:hover {
+    text-decoration: underline;
+    color: #007bff;
+  }
+
+  .question-card {
+    background-color: #f7f9fc;
+    border-radius: 12px;
+      border: 0.5px solid #000; /* Increased thickness and added a vibrant blue */
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+
+  .question-meta {
+    font-size: 10px;
+    color: #888;
+  }
 </style>
 
 <body 
   style="
-    font-family: 'Poppins', sans-serif;
-    padding-top: 80px;
     {% if user.profile.background_image %}
       background-image: url('{{ user.profile.background_image.url }}');
       background-size: cover;
@@ -98,7 +128,7 @@
           <p>{{ user.profile.bio|default:"No bio added yet." }}</p>
           <div class="profile-actions">
             <a href="{% url 'profile_update' %}" class="btn btn-primary btn-custom">Update Profile</a>
-            <a href="" class="btn btn-secondary btn-custom">Ask Queries</a>
+            <a href="{% url 'edubase:question-create' %}" class="btn btn-secondary btn-custom">Ask Queries</a>
             <a href="{% url 'edubase:question-lists' %}" class="btn btn-outline-dark btn-custom">View Queries</a>
           </div>
         </div>
@@ -111,9 +141,10 @@
           <p><strong>Phone:</strong> {{ user.profile.phone|default:"Not provided" }}</p>
         </div>
       </div>
+
       <div class="mt-4 social-icons">
-         <h5>Connect</h5>
-         <a href="{{ user.profile.Facebook|default:'#' }}" target="_blank" class="social-link" data-platform="Facebook">
+        <h5>Connect</h5>
+        <a href="{{ user.profile.Facebook|default:'#' }}" target="_blank" class="social-link" data-platform="Facebook">
           <i data-feather="facebook"></i>
         </a>
         <a href="{{ user.profile.X|default:'#' }}" target="_blank" class="social-link" data-platform="X">
@@ -121,28 +152,46 @@
         </a>
         <a href="{{ user.profile.instagram|default:'#' }}" target="_blank" class="social-link" data-platform="Instagram">
           <i data-feather="instagram"></i>
-         </a>
-          <!-- Comment display area -->
-           <div id="social-comment" style="margin-top: 10px; color: red; font-weight: bold;"></div>
-        </div>
+        </a>
+        <div id="social-comment" style="margin-top: 10px; color: red; font-weight: bold;"></div>
+      </div>
+
+      <!-- My Questions Section -->
+      <div class="mt-5 profile-section">
+        <h5>My Questions</h5>
+        {% if user_questions %}
+          {% for question in user_questions %}
+            <div class="question-card">
+              <a href="{% url 'edubase:question-detail' question.id %}" class="question-link">
+                {{ question.title }}
+              </a><br>
+              <div class="question-meta">
+                Asked on {{ question.created_at|date:"F j, Y" }}
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p>You haven't asked any questions yet.</p>
+        {% endif %}
+      </div>
     </div>
   </div>
 
   <script>
-    feather.replace()
+    feather.replace();
 
     document.querySelectorAll('.social-link').forEach(link => {
-    link.addEventListener('click', function (e) {
-      const href = this.getAttribute('href');
-      if (href === '#' || href.trim() === '') {
-        e.preventDefault(); // stop navigation
-        const platform = this.getAttribute('data-platform');
-        document.getElementById('social-comment').textContent = `${platform} link not provided`;
-      } else {
-        document.getElementById('social-comment').textContent = ''; // clear message
-      }
+      link.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#' || href.trim() === '') {
+          e.preventDefault();
+          const platform = this.getAttribute('data-platform');
+          document.getElementById('social-comment').textContent = `${platform} link not provided`;
+        } else {
+          document.getElementById('social-comment').textContent = '';
+        }
+      });
     });
-  });
   </script>
 </body>
 {% endblock %}
